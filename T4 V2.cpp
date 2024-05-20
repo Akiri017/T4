@@ -10,9 +10,11 @@ int minReplacement(const std::string& str) {
     for (char c : str) {
         if (c == '{') {
             stk.push(c);
-        } else if (c == '}' && !stk.empty() && stk.top() == '{') {
+        }
+        else if (c == '}' && !stk.empty() && stk.top() == '{') {
             stk.pop();
-        } else {
+        }
+        else {
             replacements++;
         }
     }
@@ -36,35 +38,43 @@ int main() {
 
             if (!braces.empty() && std::all_of(braces.begin(), braces.end(), [](char c) {
                 return c == '{' || c == '}';
-            })) {
-               
-            } else {
+                })) {
+                valid = true;
+
+            }
+            else {
                 std::cout << "Input is invalid. Please enter only '{' or '}'." << std::endl;
+                system("PAUSE");
+                system("CLS");
             }
         }
 
         int replacements = minReplacement(braces);
         std::cout << "Minimum number of replacements required: " << replacements << std::endl;
-        std::cout << "test";
         valid = false;
-        
-        do{
-        	std::cout << "Try again? [Y/N] ";
+
+        do {
+            std::cout << "\nTry again? [Y/N] ";
             std::getline(std::cin, YesNo);
 
             if (YesNo.size() == 1 && (YesNo[0] == 'Y' || YesNo[0] == 'y' || YesNo[0] == 'N' || YesNo[0] == 'n')) {
                 valid = true;
-            } else {
+            }
+            else {
                 std::cout << "Input is invalid. Please enter only 'Y' or 'N'." << std::endl;
             }
-        }while (valid == false);
-        
+        } while (valid == false);
+
         if (YesNo[0] == 'N' || YesNo[0] == 'n') {
             repeat = false;
         }
+        else {
+            system("PAUSE");
+            system("CLS");
+        }
     }
-	
+
     return 0;
 }
 
-  
+
